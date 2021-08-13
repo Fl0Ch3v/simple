@@ -13,7 +13,12 @@
         // L'id du container, par exemple <div id="map"></div>
         var mapID = 'map';
 		
-        
+        var haies_lyr = L.geoJSON(haies_gl, {
+            pointToLayer:function (feature, latlng) {
+                return L.marker(latlng);
+            }
+        }).addTo(map);
+
         // Plan IGN avec une transparence de 50%
         var PlanIGN = L.tileLayer('https://wxs.ign.fr/{ignApiKey}/geoportail/wmts?'+
             '&REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0&TILEMATRIXSET=PM'+
