@@ -1,4 +1,4 @@
-{
+var haies_gl = {
 "type": "FeatureCollection",
 "name": "haies_gl",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::2154" } },
@@ -13,4 +13,4 @@
 { "type": "Feature", "properties": { "id": 85, "id_H": "gl_8", "long_m": 41, "commune": "Grand Laviers", "annee": 2018, "Enjeux": "Paysager, Biodiversité", "h_finale": "1,5m", "essences": "Charme, Fusain, Noisetier, Troène, Prunellier", "structure": "alignement simple", "remarque": null, "haie_id": "hp_85" }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ 613171.149249624228105, 7004560.999396002851427 ], [ 613189.507073262124322, 7004597.576905980706215 ] ] ] } },
 { "type": "Feature", "properties": { "id": 86, "id_H": "gl_9", "long_m": 98, "commune": "Grand Laviers", "annee": 2018, "Enjeux": "Anti-érosion, Biodiversité, Paysager", "h_finale": "1,5m", "essences": "Charme, Fusain, Noisetier, Troène, Prunellier", "structure": "alignement simple", "remarque": null, "haie_id": "hp_86" }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ 613225.592077510547824, 7004680.383723156526685 ], [ 613283.881876416504383, 7004759.138973043300211 ] ] ] } }
 ]
-}
+};
