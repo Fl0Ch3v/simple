@@ -48,10 +48,15 @@
 	        layers: [OrthoIGN,PlanIGN]
         });
 
+        var haieStyle = {
+            "color" : "#ff7800",
+            "weight": 5,
+            "opacity": 0.65
+        };
+
         var haies_lyr = L.geoJSON(haies_gl, {
-            pointToLayer:function (feature, coordinates) {
-                return L.marker(coordinates);
-            }
+                   style: haieStyle
+        
         }).addTo(myMap)
     </script>
 </body>
