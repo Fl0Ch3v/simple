@@ -41,8 +41,11 @@
   // ~ Loads a GeoJSON file with our points ~
   $.getJSON("test_haies.geojson",function(data){
     L.geoJson(data, {
-      pointToLayer: function(feature,latlng).bindPopup('<strong>' + feature.properties.name + '</strong></br>' + feature.properties.description){
-        var marker = L.marker(latlng);
+      pointToLayer: function(feature,latlng){
+        var popup = L.popup()
+          .setLatLng(latlng)
+          .setContent('<strong>' + feature.properties.name + '</strong></br>' + feature.properties.description)
+          .openOn(map);
 
         // ~ Make a pop-up, configure which attributes to display
         marker.bindPopup('<strong>' + feature.properties.name + '</strong></br>' + feature.properties.description); 
