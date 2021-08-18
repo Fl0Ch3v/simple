@@ -1,0 +1,64 @@
+<html>
+<head>
+    <title>Géoservices - Carte simple</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+</head>
+<body>
+<div id="map" style="width: 100%; height: 700px;"></div>
+    <!-- Leaflet map JavaScript -->
+    <script src="haies_gl.geojson" type="text/javascript"></script>
+    <script>
+        // L'id du container, par exemple <div id="map"></div>
+        var mapID = 'map';
+		
+
+
+        // Plan IGN avec une transparence de 50%
+        var PlanIGN = L.tileLayer('https://wxs.ign.fr/{ignApiKey}/geoportail/wmts?'+
+            '&REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0&TILEMATRIXSET=PM'+
+            '&LAYER={ignLayer}&STYLE={style}&FORMAT={format}'+
+            '&TILECOL={x}&TILEROW={y}&TILEMATRIX={z}',
+            {
+	            ignApiKey: 'pratique',
+	            ignLayer: 'GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2',
+	            style: 'normal',
+	            format: 'image/png',
+	            service: 'WMTS',
+				opacity: 1.0
+        });
+		
+		// Photographies aériennes en-dessous de Plan IGN
+		var OrthoIGN = L.tileLayer('https://wxs.ign.fr/{ignApiKey}/geoportail/wmts?'+
+            '&REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0&TILEMATRIXSET=PM'+
+            '&LAYER={ignLayer}&STYLE={style}&FORMAT={format}'+
+            '&TILECOL={x}&TILEROW={y}&TILEMATRIX={z}',
+            {
+	            ignApiKey: 'pratique',
+	            ignLayer: 'ORTHOIMAGERY.ORTHOPHOTOS',
+	            style: 'normal',
+	            format: 'image/jpeg',
+	            service: 'WMTS'
+        }); 
+        // Ma carte
+        var myMap = L.map(mapID, {
+	        center: [50.172669, 1.802510],
+	        zoom: 10,
+	        layers: [OrthoIGN,PlanIGN]
+        });
+
+        $.getJSON("businesses.geojson",function(data){
+        L.geoJson(data, {
+         pointToLayer: function(feature,latlng){
+            var marker = L.marker(latlng);
+
+            // ~ Make a pop-up, configure which attributes to display
+            marker.bindPopup('<strong>' + feature.properties.business_name + '</strong></br>' + feature.properties.description); 
+
+            return marker;
+        }
+        }).addTo(myMap)
+    </script>
+</body>
+</html>
