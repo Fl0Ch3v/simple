@@ -45,7 +45,7 @@
         var marker = L.marker(latlng);
 
         // ~ Make a pop-up, configure which attributes to display
-        marker.bindPopup('<strong>' + feature.properties.business_name + '</strong></br>' + feature.properties.description); 
+        marker.bindPopup('<strong>' + feature.properties.name + '</strong></br>' + feature.properties.description); 
 
         return marker;
       }
