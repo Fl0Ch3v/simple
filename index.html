@@ -51,14 +51,6 @@
       }
     }).addTo(map);
 
-    geojsonLayer.eachLayer(function (layer) {
-      var popup = L.popup();
-      popup.setContent('text');
-
-    data.bindPopup(popup);
-    data.on('click mouseover', function () {
-      data.openPopup();
-  });
 
 });
   </script>
